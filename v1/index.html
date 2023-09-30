@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Meta Blog</title>
+</head>
+<body>
+  <h1>Welcome to The Meta Blog!</h1>
+  <pre>
+    Greetings Wanderer and welcome to this blog.
+    What the f** is this? You may ask.
+    Well to explain this I first have to introduce myself.
+    My name is Gábor Ábrahám and I'm working as a software engineer for almost a decade now.
+    As you can see I'm not a native english speaker (or writer in my case).
+    Also I'm (trying to be) funny.
+  </pre>
+  <pre>
+    So about this blog, I like experimenting with different technologies and stuff so why don't share it?
+    The idea is that I'm creating a blog for myself while I'm explaining it how I've created it and why I choose that specific solution.
+    Also I really hate when there is an example in the internet with a code snippet, but parts are missing. (I get it it would be long, but please create an example repository!)
+    My other goal is to improve my english, so feel free to correct me by opening an issue on <a href="https://github.com/abrhm/abrhm.github.io/issues" target="_blank">GitHub</a>.
+    Today we are going to "release" 2 version of this blog so don't waste any more time.
+  </pre>
+  <h2>The Code</h2>
+  <h3><a href="./v0/index.html" target="_blank">v0</a></h3>
+  <ol>
+    <li>Create a new folder and name it something e.g. <b>meta-blog</b></li>
+    <li>Now we would like to track changes and previous versions so use git with <b>git init</b></li>
+    <li>I chose github to host this fancy blog, you can do that by creating a repository with a name {github_user_name}.github.io so in my case <a href="https://github.com/abrhm/abrhm.github.io" target="_blank">abrhm.github.io</a></li>
+    <li>I've created an empty index.html file and generated its content using <a href="https://code.visualstudio.com/" target="_blank">VSCode</a> autocomplete with a single "!" cool!</li>
+    <li>Add the file to the version control and push and it is working! (sort of)</li>
+  </ol>
+  <pre>
+    So let's check what we generated with VSCode <a href="https://github.com/abrhm/abrhm.github.io/blob/master/v0/index.html" target="_blank">GitHub</a>:
+    &lt;!DOCTYPE html&gt;         // We would like to use <a href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5" target="_blank">HTML5</a>
+    &lt;html lang="en"&gt;        // We are using english language
+    &lt;meta charset="UTF-8"&gt;  // We are using UTF-8 characters
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    Whoa whoa, this is my first stop this I bet half of the developers or even more don't understand what this means (including me)
+    So let's break it up
+    We are setting the viewport (how the website will look like)
+    The content (which you are seeing) should be
+    width=device-width  // As wide as possible by the device and
+    initial-scale=1.0   // The initial scale is 1.0 but it can be further zoomed
+    To be honest I've tried to play around with the initial-scale but there were no effect.
+    Also there are some other interesting things like interactive-widget which you can play around with.
+    Nice, lets check some real code.
+  </pre>
+  <h3>v1</h3>
+  <pre>
+    Ohh yes the current version, the latest and greatest!
+  </pre>
+  <pre>
+    Well first of all the title is changed to "The Meta Blog" which is looking much better in the browser tab.
+    Also we have some nice headings &lt;h1&gt;, &lt;h2&gt; and so on to structure the content better.
+    The &lt;pre&gt; tags are displaying the content as it is, so they have a small padding from the left since I've add a few tabs (spaces).
+    Long text looks silly in Full HD monitors.
+    We also added a few &lt;a&gt; tag for navigation right now I'm using them as external links, the text inside the tags are going to be a link.
+    Also as you can see most of my links are have target="_blank" attributes which is opening the link in a new tab by default.
+    I'm using &lt;ol&gt; to have a list with numbers where every &lt;li&gt; element get a number automatically from the browser.
+    Then I've starting to refer to my previous code and the madness is starting.
+    Since HTML can't know if you write a tag you would like to show it as a text or actually use a tag,
+    you have to escape the &lt; and &gt; characters by using &amp;lt; and &amp;gt;.
+    Oh and also to be able to write &amp;lt; I have to escape the & so it is going to be:
+    &amp;amp;lt; and &amp;amp;gt;
+    To be able to escape that you have to...
+    Okay I think you get the point, never go full retard!
+    Ohh and one last but very important thing, to be able to see the v0 version of this page I moved the previous index.html file to a v0 folder.
+    I'm not sure if it is going to work, we will see. :)
+  </pre>
+  <h2>The Plans</h2>
+  <pre>
+    So this was huge, my plan for the next change is to add a button somewhere (maybe at the bottom of the page), which is always going to point to the previous "episode".
+    I told you long texts looks stupid...
+  </pre>
+</body>
+</html>
