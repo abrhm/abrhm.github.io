@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Meta Meta Blog</title>
+</head>
+<body>
+  <h1>Welcome to The Meta Meta Blog!</h1>
+  <nav>
+    <a href="../v2/index.html">&lt; Previous version</a>
+  </nav>
+  <h2>Previously on The Meta Meta Blog</h2>
+  <i>Also maybe we should redesign the page so it is not looking like it is from the 90s.</i>
+  <pre>
+    Well seems like plans are changing.
+    As usual a critical bug was introduced to the system, so we should fix it first.
+    If you check the <a href="./v1/index.html">v1</a> version and click on the v0 link it is not navigating to the proper page.
+    Why?
+    Well the answer is simple, because we are working with relative links and since we moved the v1 version to a folder, it is no longer working.
+    This example is highlighting a very import skill foresight.
+    So how to fix that?
+    Well since we are planning to improve this blog in a long term we should consider a few changes.
+  </pre>
+  <h2>The problems</h2>
+  <ol>
+    <li>Creating folders and moving the previous index.html is just not very efficient</li>
+    <li>We either not fix the broken v1 page or the v1 git tag is going to be broken from now on</li>
+    <li>We have big plans so maybe we should have a room for further improvements, you know #foresight</li>
+  </ol>
+  <h2>The Code</h2>
+  <pre>
+    So first of all I'm going to create a new folder <b>public</b> it is going to contain all the public facing sites from now on.
+    This is going to be useful in the future if we going to have another folders in this repository.
+    Under that folder every blog "entry" going to be a new folder like v0, v1, v2 and this one, the v3.
+    Now the problem is that we must have an index.html in the root folder, since it is going to be the main root (where the user navigated first).
+    Luckily HTML have a solution for us called redirecting
+
+    In the head just write:
+    &lt;head&gt;
+      &lt;meta http-equiv="refresh" content="0; URL=./public/v3/index.html"&gt;
+      ...
+      &lt;/head&gt;
+    The 0 means wait 0 seconds, and after that we can provide an URL, which is always going to be the latest version.
+    And tadaohh shit, some weird rooting issue...
+    Also the previous link is not working.
+    This feature was so young to be broken...
+    Well it turned out that this redirect does not like relative paths, so just use https://abrhm.github.io//public/v3/index.html
+    as the URL, but than I couldn't try out in my computer. (You know just the everyday struggle of software engineering).
+    I also made a nice comment to the body, just in case, but you cannot see it :)
+    Okay focus now, most of the things working locally, which is cool let's fix the git tags.
+  
+    To be able to do that we are going to use semantic versioning.
+    What is that?
+    Basically it is used to track version numbers like this x.y.z. where:
+    x is the MAJOR version, if this is increased from 1 to 2 you are going to have a bad luck
+    it means the second version have some breaking changes and there is no guarantee that it is going to work.
+    y is the MINOR version officially it is meaning that you can safely update between these versions everything should work fine,
+    but if there is one thing I learned, I would say "We hope it is not going to break anything"
+    z is the PATCH version, officially this is for bugfixes, or I would say "Most probably we are not going to break anything".
+
+    So in our case we are going to use the PATCH version, since most probably it is going to work.
+    Luckily v0 is not affected since it is not doing anything useful (good old v0 how stable...)
+    So we are going to tag the v1 version with v1.0.0 and this commit with v1.0.1 also we are going to move v1 to v1.0.1.
+    So:
+    In case of v1.0.0 the user going to see the original version.
+    In case of v1.0.1 the user can see the fixed version.
+    In case of v1 the user can see the latest patched version.
+    Also I have to do the same with v2.
+    So I guess this is it for today, wish me luck and see you in the other side...
+  </pre>
+  <h2>The Plans</h2>
+  <pre>
+    Well plans are not changing much, except 1 thing, did you read the blog in phone?
+    Omg it is looks ugly...
+    I think we should prioritize that issue, and after continue with the previous items which were:
+    How about the contacts?
+    Also maybe we should redesign the page so it is not looking like it is from the 90s.
+    It is going to be a long road, but the goal is to learn and practice! :)
+    If you have any question you can ask in the <a href="https://github.com/abrhm/abrhm.github.io/issues" target="_blank">GitHub as an issue</a>
+    You can also email me using <a href="mailto:askmetametablog@gmail.com">askmetametablog@gmail.com</a>
+    Or contact me in <a href="https://www.linkedin.com/in/abrhm/" target="_blank">Linkedin</a>
+  </pre>
+  <nav>
+    <a href="./v1/index.html">&lt; Previous version</a>
+  </nav>
+</body>
+</html>
