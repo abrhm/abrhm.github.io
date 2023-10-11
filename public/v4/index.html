@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <title>The Meta Meta Blog</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+
+      <!-- TODO: Create icon and link to jump to the latest version -->
+      <span class="navbar-brand">
+        The Meta Meta Blog Logo
+      </span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="https://abrhm.github.io/">Jump to Latest version</a>
+          </li>
+        </ul>
+        <span class="navbar-text">
+          A blog about creating this blog
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content here -->
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2">
+        <h1 class="display-6">The Meta Meta Blog</h1>
+        <h2>Previously on The Meta Meta Blog</h2>
+        <blockquote class="blockquote text-body-tertiary fst-italic fw-lighter">
+          <p class="mb-0">As usual a critical bug was introduced to the system...</p>
+          <p class="mb-0">...did you read the blog in phone?</p>
+          <p class="mb-0">we should redesign the page so it is not looking like it is from the 90s.</p>
+        </blockquote>
+        <p>
+          Finally this blog starts to look decent. To be honest I'm working as a software engineer for a decade now,
+          but in this career I have never used a non-proprietary CSS front-end toolkit like <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a> or
+          <a href="https://get.foundation/" target="_blank">Foundation</a>. (Of course I'm only working on front-end development in the last 5 years).
+          But as you can see (or will see) I'm planning to use Bootstrap for this project.
+          So let's check what is required to have such a marvelous website like this.
+        </p>
+        <h2>The Code</h2>
+        <p>
+          <i>Ugh with every iteration the code is bigger and bigger, sooner or later we should do something about that.</i>
+        </p>
+        <p class="lead">
+          So first of all how we are applying style to a website?
+        </p>
+        <p>
+          In short there is a technology called <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">CSS</a> where you can write rules which is going to be applied to your HTML.
+          To be honest, I'm not very good with this <i>"CSS magic"</i> either and I'm not planning to master it yet.
+          Luckily we have Bootstrap which is going to do the heavy lifting for us, but every framework comes with a drawbacks.
+          In our case to be able to use that we have to learn it and use it as intended, maybe even experiment with it.
+        </p>
+        <p class="lead">
+          How to use Bootstrap?
+        </p>
+        <p>
+          I'm going to use it from CDN to have a faster, more responsive website.
+          Let's say you are visiting an average 15 websites every day.
+          Three of them is using Bootstrap, so every time when you are visiting one of them,
+          your browser have to download this library again and again.
+          It is a waste of time not to mention if you are using mobile network it is going to cost you more.
+          So smart people figured out that to prevent this we can put a library on some server and download that once.
+          Your browser is storing this library on your device and when it is requested for download the browser simply returning back the already downloaded file.
+        </p>
+        <p>
+          <i>&lt;link<br>
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"<br>
+            rel="stylesheet"<br>
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"<br>
+            crossorigin="anonymous"&gt;</i>
+        </p>
+        <ul>
+          <li>href: the url where the file is stored, if it is not yet downloaded.</li>
+          <li>rel: is the relationship, in our case it is our HTML stylesheet</li>
+          <li>integrity: in short this is how we can verify that the file wasn't modified by some bad hackers</li>
+          <li>crossorigin: in short we disabling sending username and password to that server</li>
+        </ul>
+        <p>
+          Cool now since we have some fancy stuff in the website
+          (in small screens we wouldn't like to show the menu at the top, just an icon with 3 lines which marks the menu)
+          We should also add the Bootstrap javascript library.
+        </p>
+        <p>
+          <i>&lt;script<br>
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"<br>
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"<br>
+            crossorigin="anonymous""&gt;<br>
+            &lt;/script"&gt;</i>
+        </p>
+        <p>
+          It is pretty much the same, but instead of link we are using script and instead of href we are using src.
+          The difference is that it is at the very end of the body block.
+        </p>
+        <p class="lead">
+          Why script at the bottom of the body?
+        </p>
+        <p>
+          In a nutshell when the browser is reading a script tag it is working on that until it is not finished with it,
+          which could take some time and in the meantime the user is starring an ugly or half visible website.
+          This is a rule of thumb for now, but later I would like to investigate some alternatives for this.
+        </p>
+        <p>
+          So now we have the bootstrap cool, let's change a few things. First we are going to add a <a href="https://getbootstrap.com/docs/5.3/components/navbar/" target="_blank">navbar</a> at the top
+          and we are going to set that it should be expanded when the width of the website is large or bigger <i>navbar-expand-lg</i> also add some background color with <i>bg-body-tertiary</i>
+          Than add a fluid container inside of that <i>container-fluid</i> which is going to fill as much space vertically as possible.
+          Now if you are checking the source code you can see some weird things like:
+        </p>
+        <p>
+          <i>&lt;!-- TODO: Create icon and link to jump to the latest version --&gt;</i>
+        </p>
+        <p>
+          This is called a comment, it is not visible in the website, only if you check the source code.
+          It can be very useful for the developers to explain things and add notes to yourself.
+          In my case I'm adding a note to myself to create an icon for this website and when the user clicks on the icon jump to the latest blog entry.
+        </p>
+        <p class="lead">
+          Navigation (menubar):
+        </p>
+        <p>
+          The idea is to keep the original HTML structure, so we are going to use h1, h2 and so on elements, but in our case it is a little bit tricky.
+          Luckily bootstrap have classes for this like <i>display-6</i> which is setting the text to a nicer version.
+          Let's the bootstrap magic begin.
+        </p>
+        <p>
+          <i>
+            &lt;button
+            class="navbar-toggler"<br>
+            type="button"<br>
+            data-bs-toggle="collapse"<br>
+            data-bs-target="#navbarText"<br>
+            aria-controls="navbarText"<br>
+            aria-expanded="false"<br>
+            aria-label="Toggle navigation"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="navbar-toggler-icon"&gt; &lt;/span&gt;<br>
+            &lt;/button&gt;<br>
+          </i>
+        </p>
+        <ul>
+          <li>class: simple bootstrap css class for the styles</li>
+          <li>type: yeah this button is a button, but there are other types</li>
+          <li>data-bs-toggle: used by the bootstrap, we shouldn't modify this now</li>
+          <li><b>data-bs-target: this is going to be important, this is going to show which element is opening when the button is clicked in a small screen</b></li>
+          <li>aria-: these tags are for the disabled peoples to help them navigate in the page</li>
+          <li>navbar-toggler-icon: is simply to show the icon with the 3 lines</li>
+        </ul>
+        <p>
+          <i>
+            &lt;div<br>
+            class="collapse navbar-collapse"<br>
+            id="navbarText"&gt;
+          </i>
+        </p>
+        <ul>
+          <li>class: bootstrap related styles</li>
+          <li><b>id: this is the other part, this is marking the element which should be opened when the icon clicked. It is very important that the text should be the same as in data-bas-target except the # at the beginning</b></li>
+        </ul>
+        <p>
+          In the navigation bar we have a single navigation element <br>
+          which is pointing to the root index.html<br>
+          which is going to redirect us to the latest version (if everything maintained properly).<br>
+          We are setting some classes to make it looks nice like some margins and paddings.
+          And also we are putting a simple text there which is explaining the website.
+        </p>
+        <p class="lead">
+          Content:
+        </p>
+        <p>
+          So we have a container which is going to be a single row and a single column.
+          Than we have this monstrosity:
+        </p>
+        <p>
+          <i>&lt;div class="col-xl-8 offset-xl-2"&gt;</i>
+        </p>
+        <p>
+          To understand this we should start with the <a href="https://getbootstrap.com/docs/5.3/layout/grid/" target="_blank">bootstrap grid system</a>.
+          In a nutshell lets imagine that every page has 12 columns, no more no less.
+          12 is a great number, because it can be divided into smaller pieces like (6+6, 4+4+4, 3+3+3+3, 2+2+2+2+2+2) and so on.
+          But not only like this, we can use e.g 4+4+4 and divide it like this 1+4+2+4+1 why is it good?
+          Lets say we would like to have 2 columns and some padding between them so we can do:
+        </p>
+        <p>
+          <table class="w-100">
+            <tr>
+              <td class="border border-dark">1/12</td>
+              <td class="border border-dark">2/12</td>
+              <td class="border border-dark">3/12</td>
+              <td class="border border-dark">4/12</td>
+              <td class="border border-dark">5/12</td>
+              <td class="border border-dark">6/12</td>
+              <td class="border border-dark">7/12</td>
+              <td class="border border-dark">8/12</td>
+              <td class="border border-dark">9/12</td>
+              <td class="border border-dark">10/12</td>
+              <td class="border border-dark">11/12</td>
+              <td class="border border-dark">12/12</td>
+            </tr>
+            <tr>
+              <td class="border border-dark" colspan="1">padding</td>
+              <td class="border border-dark" colspan="4">content</td>
+              <td class="border border-dark" colspan="2">padding</td>
+              <td class="border border-dark" colspan="4">content</td>
+              <td class="border border-dark" colspan="1">padding</td>
+            </tr>
+          </table>
+        </p>
+        <p>
+          Or in our case it is going to be
+          <table class="w-100">
+            <tr>
+              <td class="border border-dark">1/12</td>
+              <td class="border border-dark">2/12</td>
+              <td class="border border-dark">3/12</td>
+              <td class="border border-dark">4/12</td>
+              <td class="border border-dark">5/12</td>
+              <td class="border border-dark">6/12</td>
+              <td class="border border-dark">7/12</td>
+              <td class="border border-dark">8/12</td>
+              <td class="border border-dark">9/12</td>
+              <td class="border border-dark">10/12</td>
+              <td class="border border-dark">11/12</td>
+              <td class="border border-dark">12/12</td>
+            </tr>
+            <tr>
+              <td class="border border-dark" colspan="2">padding</td>
+              <td class="border border-dark" colspan="8">content</td>
+              <td class="border border-dark" colspan="2">padding</td>
+            </tr>
+          </table>
+        </p>
+        <p>
+          This is a very flexible system, so in my case, I used an 8 wide column and moved that by 2 column to the left.
+          So I have 2 padding "column" in the left and the right side and 8 "column" for the actual content.
+          The only problem is that in case of small screens not using a lot of space is a waste, but in case of large screens it is looks silly.
+          This is why I have the xl modifier which is saying, only apply this if we are on a e<b>x</b>tra_<b>l</b>arge screen
+        </p>
+        <p>
+          The rest of the code is not very interesting we checked all these stuff previously, I've digged a little bit and used a few suggestions from the <a href="https://getbootstrap.com/docs/5.3/content/typography/" target="_blank">Bootstrap Typography</a> page.
+          Trial and error, see if I like something and change it a little more if not.
+        </p>
+        <p>
+          During the explanation of the columns I used an <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table" target="_blank">HTML table</a> for visualization.
+          A few applied CSS classes to be able to see its border and we are done! The plan is to use bootstrap whenever possible and avoid custom CSS.
+        </p>
+        <p>
+          We are going to use a table and the width of the table is going to use 100% of the available width. This is called inline style because 
+        </p>
+        <p class="lead">
+          Release notes
+        </p>
+        <p>
+          Yeah another thing I wanted to introduce (since the previous versions of the page contains some further bugs).
+          In case of typos and other minor changes I don't want to document everything here, so I'm just going to add a Release notes section at the bottom of the page when I see fit.
+          How it is working?
+          For that I used <a href="https://getbootstrap.com/docs/5.3/components/collapse/" target="_blank">Bootstrap Collapse</a> it seems like it is only working with divs.
+          It is very similar to the menu we have, we just be careful to use <i>href="#collapseReleaseNotesContainer"</i> in the link and <i>id="collapseReleaseNotesContainer" class="collapse"</i> in the container which we are controlling.
+          And when a user clicks on the <a data-bs-toggle="collapse" href="#collapseReleaseNotesContainer" role="button" aria-expanded="false" aria-controls="collapseReleaseNotesContainer">
+            Release notes
+          </a> link it is opening the container.
+        </p>
+        <p>
+          Other minor change is instead of <i>&lt;pre&gt;</i> I'm using <i>&lt;p&gt;</i> or paragraph which is going to have a much nicer line breaking compared to the original solution.
+          Also I can write my content however I want, it is going to ignore all the new line characters. Sweet! 
+        </p>
+        <h2>The Plans</h2>
+        <p>
+          Well that was a long one, but redesigning a website is always painful, this is why in software engineering
+          we are trying to prepare to the future and create future proof solutions.
+        </p>
+        <p>
+          The next step is going to be some minor improvements like logo and some other pretty stuff.
+          Hopefully I'm going to have enough time and energy to deliver that in time, there are also some things to do in the work.
+        </p>
+        <p>
+          <a data-bs-toggle="collapse" href="#collapseReleaseNotesContainer" role="button" aria-expanded="false" aria-controls="collapseReleaseNotesContainer">
+            Release notes
+          </a>
+        </p>
+        <div id="collapseReleaseNotesContainer" class="collapse">
+          <div class="card card-body">
+            <ul>
+              <li>Fix "Previous version" link at the bottom of <a href="../v2/index.html" target="_blank">v2</a></li>
+              <li>Fix "Previous version" link at the bottom of <a href="../v3/index.html" target="_blank">v3</a></li>
+              <li>Fix "v1" link at the Previously section of <a href="../v3/index.html" target="_blank">v3</a></li>
+              <li>Move the following tags to this version: v2, v3</li>
+              <li>Add the following new tags to this version: v2.0.2, v3.0.1, v4</li>
+              <li>Fix unnecessary // in the root index.html</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Include JS bootstrap CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -15,7 +15,7 @@
   <pre>
     Well seems like plans are changing.
     As usual a critical bug was introduced to the system, so we should fix it first.
-    If you check the <a href="./v1/index.html">v1</a> version and click on the v0 link it is not navigating to the proper page.
+    If you check the <a href="../v1/index.html">v1</a> version and click on the v0 link it is not navigating to the proper page.
     Why?
     Well the answer is simple, because we are working with relative links and since we moved the v1 version to a folder, it is no longer working.
     This example is highlighting a very import skill foresight.
@@ -35,7 +35,7 @@
     Under that folder every blog "entry" going to be a new folder like v0, v1, v2 and this one, the v3.
     Now the problem is that we must have an index.html in the root folder, since it is going to be the main root (where the user navigated first).
     Luckily HTML have a solution for us called redirecting
-
+  
     In the head just write:
     &lt;head&gt;
       &lt;meta http-equiv="refresh" content="0; URL=./public/v3/index.html"&gt;
@@ -82,7 +82,7 @@
     Or contact me in <a href="https://www.linkedin.com/in/abrhm/" target="_blank">Linkedin</a>
   </pre>
   <nav>
-    <a href="./v1/index.html">&lt; Previous version</a>
+    <a href="../v2/index.html">&lt; Previous version</a>
   </nav>
 </body>
 </html>
